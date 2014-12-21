@@ -24,16 +24,12 @@ class ArticlesController extends BaseController
 	 */
 	public function index()
 	{
-        if ( ! Input::has('q'))
-        {
-            $articles = $this->articleRepository->all();
-        }
-        else
-        {
+        if (Input::has('q'))
             $articles = $this->articleRepository->search(Input::get("q"));
-        }
+        else
+            $articles = $this->articleRepository->all();
 
-		return View::make("articles.index", compact('articles'));
+        return View::make("articles.index", compact('articles'));
 	}
 
 
