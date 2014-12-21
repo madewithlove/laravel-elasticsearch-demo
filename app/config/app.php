@@ -123,7 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
         /* Application */
-        'Acme\Providers\RepositoriesServiceProvider'
+        'Acme\Providers\RepositoriesServiceProvider',
+        'Acme\Providers\ObserversServiceProvider'
 
 	),
 

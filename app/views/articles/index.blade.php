@@ -8,7 +8,7 @@
     <h1>Articles</h1>
 
     {{ Form::open(['method' => 'get']) }}
-        {{ Form::text("q", Input::old("q"), ["placeholder" => "search"]) }}
+        {{ Form::text("q", Request::get("q"), ["placeholder" => "search"]) }}
     {{ Form::close() }}
     {{ link_to_route("articles.index", "clear search") }}
 

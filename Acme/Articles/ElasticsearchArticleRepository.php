@@ -36,9 +36,7 @@ class ElasticsearchArticleRepository implements ArticleRepository
     {
         $items = $this->searchOnElasticsearch($query);
 
-        $queryResult = $this->buildModelsFromElasticsearch($items);
-
-        return Collection::make($queryResult);
+        return $this->buildModelsFromElasticsearch($items);
     }
 
     /**
@@ -76,15 +74,12 @@ class ElasticsearchArticleRepository implements ArticleRepository
     private function buildModelsFromElasticsearch($items)
     {
         $result = $items['hits']['hits'];
-        $queryResult = [];
 
-        foreach ($result as $r)
-        {
+        return Collection::make(array_map(function($r) {
             $article = new Article();
             $article->newInstance($r['_source'], true);
             $article->setRawAttributes($r['_source'], true);
-            $queryResult[] = $article;
-        }
-        return $queryResult;
+            return $article;
+        }, $result));
     }
 }
