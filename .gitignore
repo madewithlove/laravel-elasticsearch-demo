@@ -1,10 +1,9 @@
-/bootstrap/compiled.php
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
 /vendor
-/.vagrant
 /.idea
-composer.phar
-composer.lock
-.env.*.php
-.env.php
-.DS_Store
-Thumbs.db
+Homestead.json
+Homestead.yaml
+.env
