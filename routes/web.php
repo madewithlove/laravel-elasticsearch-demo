@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    $articles = \App\Article::all();
+Route::get('/', function (\App\Articles\ArticlesRepository $repository) {
+    if (request('q')) {
+        $articles = $repository->search(request('q'));
+    } else {
+        $articles = \App\Article::all();
+    }
 
     return view('welcome', ['articles' => $articles]);
 });

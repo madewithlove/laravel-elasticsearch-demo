@@ -17,17 +17,36 @@
                         Articles <small>({{ $articles->count() }})</small>
                     </div>
                     <div class="panel-body">
-                        @forelse ($articles as $article)
-                            <article>
-                                <h2>{{ $article->title }}</h2>
+                        <div class="row">
+                            <div class="container">
+                                <form action="" method="get">
+                                    <div class="form-group">
+                                        <input
+                                                type="text"
+                                                name="q"
+                                                class="form-control"
+                                                placeholder="Search..."
+                                                value="{{ request('q') }}"
+                                        />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container">
+                                @forelse ($articles as $article)
+                                    <article>
+                                        <h2>{{ $article->title }}</h2>
 
-                                <p>{{ $article->body }}</body>
+                                        <p>{{ $article->body }}</body>
 
-                                <p class="well">{{ implode(', ', $article->tags ?: []) }}</p>
-                            </article>
-                         @empty
-                            <p>No articles found</p>
-                        @endforelse
+                                        <p class="well">{{ implode(', ', $article->tags ?: []) }}</p>
+                                    </article>
+                                @empty
+                                    <p>No articles found</p>
+                                @endforelse
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
