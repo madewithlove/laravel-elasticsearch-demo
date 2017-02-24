@@ -12,5 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $articles = \App\Article::all();
+
+    return view('welcome', ['articles' => $articles]);
 });
